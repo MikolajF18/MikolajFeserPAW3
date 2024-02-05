@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Wypozyczalnia motocykli - wyrusz w droge!</title>
+</h:head>
+<h:body style="background-color: gray; margin: 5em;">
+
+	<p:panel header="Menu" style="margin-bottom:2em;">
+		<h:form>
+		<p:commandButton value="Strona główna" style="margin-right:1em;"
+					action="/stronaDomowa.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton value="Motocykle" style="margin-right:1em;"
+					action="/motocyklList.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton rendered="#{sessionScope.user.rola.idroli == 1}" value="Moje rezerwacje" style="margin-left:53em;"
+					action="/rezerwacjeList.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton rendered="#{sessionScope.user.rola.idroli == 2}" value="Uzytkownicy" style="margin-right:1em;"
+					action="/uzytkownikList.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton rendered="#{sessionScope.user == null}" value="Zaloguj" style="margin-left:59em;"
+					action="/login.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton rendered="#{sessionScope.user == null}" value="Rejestruj" style="margin-left:80em;"
+					action="/register.xhtml?faces-redirect=true" styleClass="rounded-button"/>
+		<p:commandButton rendered="#{sessionScope.user != null}" value="Wyloguj" style="margin-left:80em;"
+					action="#{loginBB.wylogowanie()}" styleClass="rounded-button"/>
+		</h:form>
+	</p:panel>
+	
+	<p:panel header="Baner" style="margin-bottom:2em;">
+		<p:graphicImage name="2.jpg" alt="Baner" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"/>
+	</p:panel>
+	
+	
+</h:body>
+</html>

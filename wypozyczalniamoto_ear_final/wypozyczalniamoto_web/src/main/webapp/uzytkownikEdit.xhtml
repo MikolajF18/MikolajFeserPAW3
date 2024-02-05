@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{uzytkownikEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>wypozyczalnia moto - edytowanie</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Edycja rekordu - dane uzytkownika">
+
+		<h:form rendered="#{uzytkownikEditBB.uzytkownik != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+				
+				<h:outputLabel for="p-email" value="email:" />
+				<p:inputText id="p-email" value="#{uzytkownikEditBB.uzytkownik.email}"
+					required="true" requiredMessage="Podaj email"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-email" display="icon"/>
+
+				<h:outputLabel for="p-haslo" value="haslo:" />
+				<p:inputText id="p-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
+					required="true" requiredMessage="podaj haslo"
+					converterMessage="co najmniej 1 znak">
+					<f:validateLength minimum="1" />
+			    </p:inputText>
+				<p:message for="p-haslo" display="icon"/>
+				
+				<h:outputLabel for="p-imie" value="imie:" />
+				<p:inputText id="p-imie" value="#{uzytkownikEditBB.uzytkownik.imie}"
+					required="true" requiredMessage="Podaj imie"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-imie" display="icon"/>
+				
+				<h:outputLabel for="p-nazwisko" value="nazwisko:" />
+				<p:inputText id="p-nazwisko" value="#{uzytkownikEditBB.uzytkownik.nazwisko}"
+					required="true" requiredMessage="Czydostepny"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-nazwisko" display="icon"/>
+				
+				<h:outputLabel for="p-nrtelefonu" value="nrtelefonu:" />
+				<p:inputText id="p-nrtelefonu" value="#{uzytkownikEditBB.uzytkownik.nrtelefonu}"
+					required="true" requiredMessage="nrtelefonu"
+					validatorMessage="co najwyżej 9 znaków">
+					<f:validateLength maximum="9" />
+				</p:inputText>
+				<p:message for="p-nrtelefonu" display="icon"/>
+				
+				<h:outputLabel for="p-pesel" value="pesel:" />
+				<p:inputText id="p-pesel" value="#{uzytkownikEditBB.uzytkownik.pesel}"
+					required="true" requiredMessage="pesel"
+					validatorMessage="co najwyżej 11 znaków">
+					<f:validateLength maximum="11" />
+				</p:inputText>
+				<p:message for="p-pesel" display="icon"/>
+				
+				<h:outputLabel for="p-nrprawajazdy" value="nrprawajazdy:" />
+				<p:inputText id="p-nrprawajazdy" value="#{uzytkownikEditBB.uzytkownik.nrprawajazdy}"
+					required="true" requiredMessage="nrprawajazdy"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-nrprawajazdy" display="icon"/>
+				
+				<h:outputLabel for="p-kategorieprawajazdy" value="kategorieprawajazdy:" />
+				<p:inputText id="p-kategorieprawajazdy" value="#{uzytkownikEditBB.uzytkownik.kategorieprawajazdy}"
+					required="true" requiredMessage="kategorieprawajazdy"
+					validatorMessage="co najwyżej 1 znaków">
+					<f:validateLength maximum="1" />
+				</p:inputText>
+				<p:message for="p-kategorieprawajazdy" display="icon"/>
+				
+				<h:outputLabel for="rola" value="rola:" />
+				<p:selectOneListbox id="rola" value="#{uzytkownikEditBB.rola}">
+					<f:selectItem itemLabel="klient" itemValue="1"/>
+                	<f:selectItem itemLabel="admin" itemValue="2"/>
+            	</p:selectOneListbox>
+				
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{uzytkownikEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Anuluj" outcome="uzytkownikList" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>
